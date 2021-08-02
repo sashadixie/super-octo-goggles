@@ -1,5 +1,6 @@
 function createHtmlChildElems(arr) {
-  const list = document.createElement('div', { id: 'parent' });
+  const list = document.createElement('div');
+  list.setAttribute('id', 'parent')
   list.innerHTML = '';
 
   arr.forEach(function (element, index) {
