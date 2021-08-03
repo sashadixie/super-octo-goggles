@@ -1,4 +1,4 @@
-function createHtmlChildElems(arr) {
+function renderPosts(arr) {
   const list = document.createElement('div');
   list.setAttribute('id', 'parent')
   list.innerHTML = '';
@@ -20,6 +20,8 @@ function createHtmlChildElems(arr) {
   return list;
 }
 
-fetch('https://jsonplaceholder.typicode.com/posts')
-  .then((response) => response.json())
-  .then((json) => document.body.append(createHtmlChildElems(json)));
+function getPosts() {
+  fetch('https://jsonplaceholder.typicode.com/posts')
+    .then((response) => response.json())
+    .then((json) => document.body.append(renderPosts(json)));
+}
