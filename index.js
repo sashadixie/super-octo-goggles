@@ -5,12 +5,19 @@ function createHtmlChildElems(arr) {
 
   arr.forEach(function (element, index) {
     const item = document.createElement('div');
-    item.innerHTML = `результат: ${element}`
+    item.setAttribute('data-uid', element.userId)
+    item.setAttribute('data-postid', element.id)
+    const header = document.createElement('div', { className: 'title' })
+    const body = document.createElement('div', { className: 'content' })
+    header.innerText = element.title
+    body.innerText = element.body
+    item.appendChild(header)
+    item.appendChild(body)
     list.appendChild(item);
   });
   return list;
 }
 
-const foo = [4, 5, undefined, undefined, 666, -98, 45, 78, undefined, undefined, undefined, 6, 6, 5, 4, 7];
-const elems = createHtmlChildElems(foo);
-document.body.append(elems);
+fetch('https://jsonplaceholder.typicode.com/posts')
+  .then((response) => response.json())
+  .then((json) => document.body.append(createHtmlChildElems(json)));
