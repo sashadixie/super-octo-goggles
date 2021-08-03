@@ -7,8 +7,10 @@ function createHtmlChildElems(arr) {
     const item = document.createElement('div');
     item.setAttribute('data-uid', element.userId)
     item.setAttribute('data-postid', element.id)
-    const header = document.createElement('div', { className: 'title' })
-    const body = document.createElement('div', { className: 'content' })
+    const header = document.createElement('div')
+    header.classList.add('header')
+    const body = document.createElement('div')
+    body.classList.add('content')
     header.innerText = element.title
     body.innerText = element.body
     item.appendChild(header)
